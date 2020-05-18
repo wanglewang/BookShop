@@ -111,4 +111,24 @@ public class UserBiz {
 		}
 	}
 
+	public boolean updatePW(String newpw, String uname) throws Exception {
+		// TODO Auto-generated method stub
+		UserDao dao = new UserDao();
+		boolean flag=dao.updateUserInfo(newpw,uname);
+		return flag;
+	}
+
+	public boolean DeleteP(String pid) throws Exception{
+		// TODO Auto-generated method stub
+		UserDao dao = new UserDao();
+		boolean flag =dao.DeleteP(pid);
+		return flag;
+	}
+
+	public double UpdatePrice(double price, String uname)throws Exception {
+		// TODO Auto-generated method stub
+		UserDao dao = new UserDao();
+		return dao.UpdatePrice(price,uname);
+	}
+
 }

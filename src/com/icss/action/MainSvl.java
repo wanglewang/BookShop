@@ -44,7 +44,4 @@ public class MainSvl extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/error/err.jsp").forward(request, response);
 		}		
 	}
-
-	
-
 }

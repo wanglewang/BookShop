@@ -1,5 +1,6 @@
 package com.icss.bll;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
@@ -64,5 +65,60 @@ public class BookBiz {
 			dao.closeConnection();
 		}		
 	}
+
+	public void Add(Book book) throws Exception  {
+		// TODO Auto-generated method stub
+		BookDao dao = new BookDao();
+		try {
+			dao.AddNewBook(book);
+
+		} finally {
+			dao.closeConnection();
+		}		
+	}
+
+	public boolean Delete(Book book) throws Exception{
+		// TODO Auto-generated method stub
+		BookDao dao = new BookDao();
+		boolean flag=false;
+		try {
+			flag=dao.DeleteBook(book);
+
+		} finally {
+			dao.closeConnection();
+			
+		}	return flag;
+	}
+
+	public boolean Addnum(int result, String isbn) throws Exception{
+		// TODO Auto-generated method stub
+		BookDao dao = new BookDao();
+		
+		boolean flag=false;
+		try {
+			flag=dao.AddNum(result,isbn);
+		} finally {
+			dao.closeConnection();
+		
+		}	
+		return flag;
+	}
+
+	public boolean UpdatePrice(double price, String isbn)throws Exception {
+		// TODO Auto-generated method stub
+		BookDao dao = new BookDao();
+		boolean flag=false;
+		try {
+			flag=dao.updateprice(price,isbn);
+
+		} finally {
+			dao.closeConnection();
+		
+		}
+		return flag;
+	}
+
+	
+	
 
 }

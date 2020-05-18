@@ -2,6 +2,8 @@ package com.icss.dll;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -145,5 +147,77 @@ public class BookDao extends BaseDao{
 		ps.close();
 		
 		return books;
+	}
+
+	/**
+	 * 添加新书
+	 * @param book 新书
+	 */
+	public void AddNewBook(Book book) throws Exception{
+		
+		// TODO Auto-generated method stub
+		String sql="insert into tbook(isbn,cid,bname,author,press,pdate,pic,discount,info,price,num) values(?,?,?,?,?,?,?,?,?,?,?)";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1,book.getIsbn());
+		ps.setString(2, book.getCid());
+		ps.setString(3,book.getBname());
+		ps.setString(4,book.getAuthor());
+		ps.setString(5,book.getPress());
+		ps.setTimestamp(6,new java.sql.Timestamp(book.getPdate().getTime()));	
+		ps.setString(7,book.getPic());
+		ps.setDouble(8,1.0);
+		ps.setString(9,"non");	
+		ps.setDouble(10,book.getPrice());
+		ps.setInt(11,1);
+		ps.executeUpdate();
+		ps.close();		
+	}
+	public boolean DeleteBook(Book book) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		String sql="delete from tbook where isbn=?";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1,book.getIsbn());
+		int i=ps.executeUpdate();
+		ps.close();
+		if(i==0) {
+			return false;
+		}
+		else
+		{
+			return true;
+			
+		}
+	}
+	public boolean AddNum(int result,String isbn) throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		String sql="update tbook set num=num+? where isbn=?";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(2,isbn);
+		ps.setInt(1, result);
+		int i=ps.executeUpdate();
+		ps.close();
+		if(i==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public boolean updateprice(double price, String isbn) throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		String sql="update tbook set price=? where isbn=?";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(2,isbn);
+		ps.setDouble(1,price);
+		int i=ps.executeUpdate();
+		ps.close();
+		if(i==1) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

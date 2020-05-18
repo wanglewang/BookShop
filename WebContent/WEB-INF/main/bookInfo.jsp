@@ -18,7 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			<tr><td>商品价格</td><td>${book.price}</td></tr>
        			<tr><td>出版社</td><td>${book.press}</td></tr>
        			<tr><td height=300 colspan=3>${book.info}</td></tr>
-       			<tr><td colspan=3 align=center><a href="<%=basePath%>user/ShopCarAddSvl?isbn=${book.isbn}">加入购物车</a> &nbsp; <a href="<%=basePath%>MainSvl">返回</a></td></tr>		
+       			<tr><td colspan=3 align=center><a href="<%=basePath%>user/ShopCarAddSvl?isbn=${book.isbn}">加入购物车</a> &nbsp;
+       			 <a href="<%=basePath%>MainSvl">返回</a></td></tr>		
       			
     		</table>
   		

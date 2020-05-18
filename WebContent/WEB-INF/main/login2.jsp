@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body>
-	 <form action="<%=basePath%>LoginSvl" method="post" id="myform">
+	 <form action="<%=basePath%>LoginSvl2" method="post" id="myform">
         <table align="center">            
             <tr><td height=200></td></tr>
             <tr><td>用户名：</td><td><input type="text" name="uname" id="uname"></td></tr>

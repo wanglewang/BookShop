@@ -7,8 +7,8 @@ public class Order {
 	private String uname;
 	private double allMoney;
 	private Date   payTime;
-	
-	
+	private OrderDetail orderdetail;
+	private String stat;
 	public String getOid() {
 		return oid;
 	}
@@ -32,6 +32,18 @@ public class Order {
 	}
 	public void setPayTime(Date payTime) {
 		this.payTime = payTime;
+	}
+	public OrderDetail getOrderdetail() {
+		return orderdetail;
+	}
+	public void setOrderdetail(OrderDetail orderdetail) {
+		this.orderdetail = orderdetail;
+	}
+	public String getStat() {
+		return stat;
+	}
+	public void setStat(String stat) {
+		this.stat = stat;
 	}
 	
 	

@@ -23,11 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	   if(pwd != pwd2){
     		   alert("密码与密码确认不一致，请重新输入....")
     		   return false;
-    	   }
+    	   } 	var tel = document.getElementById("tel").value;
+    	if(isnan(tel)|tel.trim()==""){
+    		alert("输入正确电话号码");
+    		return flase
+    	}
     	   var myform = document.getElementById("myform");
     	   myform.submit();	       	
     }
-    
     var xmlhttp;      //定义一个全局对象
     
     function validUname(){

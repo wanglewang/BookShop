@@ -1,9 +1,11 @@
 package com.icss.ui;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 import com.icss.bll.UserBiz;
 import com.icss.constant.IRole;
+import com.icss.dll.BookDao;
 import com.icss.entity.User;
 import com.icss.exception.InputEmptyException;
 import com.icss.exception.UserVoilateExceptoin;
@@ -61,8 +63,8 @@ public class Test {
 		
 	}
 	
-	public static void main(String[] args) {
-		Test.registTest();
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		BookDao dao=new BookDao();
 	}
 		
 }

@@ -1,9 +1,9 @@
 ```
-show databases;      //显示所有库信息
-drop database bk;    //删除原有库
+show databases;      #显示所有库信息
+drop database bk;    #删除原有库
 create database bk;
 
-use bk;                //打开库
+use bk;                #打开库
 show tables;
 
 drop table tuser;
@@ -55,7 +55,7 @@ insert into tbook values('1010001234','c001','三国志','罗贯中','外文出版社','199
 insert into tbook values('1010001236','c003','西游记','吴承恩','邮电出版社','2008-10-1','/bkpic/西游记.jpg','xxxxddddssss',0.85,58.6,1000);
 
 
---我的收藏
+#我的收藏
 drop table TCollect;
 create table TCollect
 (
@@ -71,7 +71,7 @@ alter table TCollect add constraint FK_Reference_2 foreign key (uname)
 alter table TCollect add constraint FK_Reference_3 foreign key (isbn)
       references TBook (isbn) on delete restrict on update restrict;
 
---评论
+#评论
 drop table TPing;
 create table TPing
 (
@@ -88,7 +88,7 @@ alter table TPing add constraint FK_Reference_7 foreign key (uname)
 alter table TPing add constraint FK_Reference_8 foreign key (isbn)
       references TBook (isbn) on delete restrict on update restrict;
 
---订单
+#订单
 create table TOrder
 (
    oid                  varchar(28) not null,

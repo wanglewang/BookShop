@@ -50,8 +50,8 @@ public class Book {
 	public String getPress() {
 		return press;
 	}
-	public void setPress(String press) {
-		this.press = press;
+	public void setPress(String cuser) {
+		this.press = cuser;
 	}
 	public Date getPdate() {
 		return pdate;

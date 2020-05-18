@@ -2,6 +2,7 @@ package com.icss.dll;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import com.icss.dto.Book;
@@ -38,7 +39,7 @@ public class UserDao extends BaseDao{
 	 * @throws Exception
 	 */
 	public String addOrder(String uname,double allMoney) throws Exception{
-		//»ñµÃ¶©µ¥ºÅ
+
 		String oid = OrderUtil.createNewOrderNo();
 		String sql = "insert into torder values(?,?,?,?)";
 		this.openConnection();
@@ -182,5 +183,57 @@ public class UserDao extends BaseDao{
 		ps.close();
 		
 		return bRet;
+	}
+
+	public boolean updateUserInfo(String newpw, String uname)throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "update tuser set pwd=? where uname=?";		
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1, newpw);
+		ps.setString(2,uname);
+		int i=ps.executeUpdate();
+
+		ps.close();
+		if(i==1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public boolean DeleteP(String pid) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="delete from tuser where uname=?";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1,pid);
+		int i=ps.executeUpdate();
+		ps.close();
+		if(i==0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	public double UpdatePrice(double price, String uname) throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "update tuser set account=account+? where uname=?";		
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setDouble(1,price);
+		ps.setString(2,uname);
+		ps.close();
+		String sql1 = "select * from tuser where uname=?";
+		PreparedStatement ps1 = conn.prepareStatement(sql1);
+		ps1.setString(1, uname);
+		ResultSet rs1 = ps.executeQuery();
+		double account =rs1.getDouble("account");
+		ps1.close();
+		rs1.close();
+		return account;
 	}
 }
