@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.icss.dll.OrderDao;
 import com.icss.entity.Order;
+import com.icss.entity.UniteInfo;
 
 public class OrderBiz {
 	public List<Order> getOrderList(String uname) throws Exception {
@@ -46,5 +47,10 @@ public class OrderBiz {
 		} finally {
 			dao.closeConnection();
 		}	
+	}
+
+	public List<UniteInfo> getUniteInfo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
