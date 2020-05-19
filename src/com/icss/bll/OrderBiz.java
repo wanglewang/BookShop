@@ -49,8 +49,29 @@ public class OrderBiz {
 		}	
 	}
 
-	public List<UniteInfo> getUniteInfo() {
+	public List<UniteInfo> getUniteInfo() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		List<UniteInfo> unite = null;
+		OrderDao dao = new OrderDao();
+		try {
+			unite = dao.getUniteInfo();	
+		} finally {
+			dao.closeConnection();
+		}	
+	
+	return unite;		
+	}
+
+	public List<UniteInfo> SeekUniteInfo(String uname) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		List<UniteInfo> unite = null;
+		OrderDao dao = new OrderDao();
+		try {
+			unite = dao.SeekUniteInfo(uname);	
+		} finally {
+			dao.closeConnection();
+		}	
+	
+	return unite;	
 	}
 }

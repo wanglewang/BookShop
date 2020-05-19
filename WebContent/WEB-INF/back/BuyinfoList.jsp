@@ -11,22 +11,31 @@ int Num=(int)request.getAttribute("NUM");
     <title>BuyinfoList</title>
 	<script>
 function goPage(pno,psize){
-	
   var itable = document.getElementById("idData");
-  var num = parseInt(<%=Num%>);
-  var totalPage = 2;
   var pageSize = psize;
-  var currentPage = pno;
-  var startRow = num-(currentPage - 1) * pageSize;
-    var endRow = currentPage * pageSize-1;
-    endRow = (endRow > num)? num : endRow; 
-  for(var i=1;i<(num+1);i++){
-    var irow = itable.rows[i-1];
-    if(i>=startRow && i<=endRow){
-      irow.style.display = "block";
+  var num = parseInt(<%=Num%>);
+  var p1=num/pageSize;
+  var p2=parseInt(num/pageSize);
+  if(p1>p2){
+      totalPage=parseInt(num/pageSize)+1;
     }else{
-      irow.style.display = "none";
+      totalPage=parseInt(num/pageSize);
     }
+  var currentPage = pno;
+  var startRow = (currentPage - 1) * pageSize;
+    var endRow = currentPage * pageSize;
+    endRow = (endRow > num)? num : endRow; 
+    var i=0;
+ while(i<(num)){
+    var irow = itable.rows[i];
+    if(i>=startRow && i<endRow){
+
+    	 irow.style.display="block";
+    }else{
+
+    	 irow.style.display="none";
+    }
+    i=i+1;
   }
   var tempStr = "共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页";
   if(currentPage>1){
@@ -65,15 +74,14 @@ function goPage(pno,psize){
       
       <!-- 查询条件 -->
       <tr>
-      	<td>
+      	<td><form action="<%=basePath%>back/SeekInfoSvl" method="post" id="myForm">
       		<table>
       		   <tr><td align=left>用户名 </td><td><input type="text" name="uname"/></td></tr>
                <tr>
-                   <td align=left>开始日期 </td><td><input type="text" name="beginDate"/></td>
-                   <td align=left>结束日期 </td><td><input type="text" name="endDate"/></td>
                    <td><input type=submit value="查询"/></td>
                </tr>
       		</table>
+      		</form>
       	</td>
       </tr>
       
@@ -86,7 +94,7 @@ function goPage(pno,psize){
       	<tr>
       	<td colspan=8>
       		<table id="idData" cellSpacing="0" cellPadding="1" width="100%" border="0" style="font-family:arial;color:red;font-size:12px;">	    		
-	    			<tr>
+	    			
 	    			<c:forEach var="unit" items="${units}">		
        					<tr>
        				<td>${unit.uname}</td>
@@ -96,7 +104,7 @@ function goPage(pno,psize){
        				<td>${unit.stat}</td>
        				</tr> 
 					</c:forEach>
-	    			</tr>	    		
+	    	   		
 	    		</table>	    	
       	</td>
       </tr>

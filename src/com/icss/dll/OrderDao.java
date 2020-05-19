@@ -10,6 +10,7 @@ import java.util.Set;
 import com.icss.dto.Book;
 import com.icss.entity.Order;
 import com.icss.entity.OrderDetail;
+import com.icss.entity.UniteInfo;
 
 public class OrderDao  extends BaseDao{
 	public List<Order> getOrderList(String uname) throws SQLException, ClassNotFoundException {
@@ -67,5 +68,51 @@ public class OrderDao  extends BaseDao{
 		PreparedStatement ps = this.conn.prepareStatement(sql);
 		ps.executeUpdate();
 		ps.close();
+	}
+
+	public List<UniteInfo> getUniteInfo() throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+List<UniteInfo> unites;
+		String sql = "select a.uname,b.bname,c.paytime,c.allmoney,c.stat from tuser a join tbook b join torder c join torderdetail d on a.uname=c.uname and c.oid=d.oid and b.isbn=d.isbn;";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		unites = new ArrayList<>();
+		while(rs.next()) {
+			UniteInfo unite = new UniteInfo();
+			unite.setAllMoney(rs.getDouble("allmoney"));
+			unite.setBname(rs.getString("bname"));
+			unite.setPayTime(rs.getDate("paytime"));
+			unite.setUname(rs.getString("uname"));
+			unite.setStat(rs.getString("stat"));
+			unites.add(unite);
+		}
+		rs.close();
+		ps.close();	
+		return unites;
+	}
+
+	public List<UniteInfo> SeekUniteInfo(String uname) throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+        List<UniteInfo> unites;
+		String sql = "select a.uname,b.bname,c.paytime,c.allmoney,c.stat from tuser a join tbook b join torder c "
+				+ "join torderdetail d on a.uname=c.uname and c.oid=d.oid and b.isbn=d.isbn and a.uname=?;";
+		this.openConnection();
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1,uname);
+		ResultSet rs = ps.executeQuery();
+		unites = new ArrayList<>();
+		while(rs.next()) {
+			UniteInfo unite = new UniteInfo();
+			unite.setAllMoney(rs.getDouble("allmoney"));
+			unite.setBname(rs.getString("bname"));
+			unite.setPayTime(rs.getDate("paytime"));
+			unite.setUname(rs.getString("uname"));
+			unite.setStat(rs.getString("stat"));
+			unites.add(unite);
+		}
+		rs.close();
+		ps.close();	
+		return unites;
 	}
 }
