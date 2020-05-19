@@ -115,4 +115,23 @@ List<UniteInfo> unites;
 		ps.close();	
 		return unites;
 	}
+
+	public List<UniteInfo> getSaleStat() throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		   List<UniteInfo> unites;
+			String sql = "select sum(d.buynum), b.bname from torderdetail d,torder br, tbook b where br.oid = d.oid  and b.isbn = d.isbn and br.paytime >'2015-10-1'and br.paytime <'2020-11-27'   group by b.bname";
+			this.openConnection();
+			PreparedStatement ps = this.conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			unites = new ArrayList<>();
+			while(rs.next()) {
+				UniteInfo unite = new UniteInfo();
+				unite.setBname(rs.getString("bname"));
+				unite.setSumNum(rs.getInt("sum(d.buynum)"));
+				unites.add(unite);
+			}
+			rs.close();
+			ps.close();	
+			return unites;
+	}
 }

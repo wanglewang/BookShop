@@ -11,5 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	         &nbsp;  <a href="<%=basePath%>back/BookDeleteSvl">书下架</a> &nbsp;  <a href="<%=basePath%>back/UserManageSvl">用户管理</a>
       	 &nbsp;  <a href="<%=basePath%>back/TopUpSvl">充值</a>    &nbsp; <a href="<%=basePath%>back/BookUpdatePriceSvl">修改售价</a> &nbsp; <a href="<%=basePath%>back/BuyinfoListSvl">用户购买记录</a>
       	    &nbsp; <a href="<%=basePath%>back/DealOrderSvl">订单处理</a>
+      	    &nbsp; <a href="<%=basePath%>back/SaleTopSvl">销售情况</a>
       	</td>
 </tr>

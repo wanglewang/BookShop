@@ -27,7 +27,7 @@ public class ComeBack extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/main/updateInfo.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/back/Test.jsp").forward(request, response);
 	}
 
 }

@@ -8,6 +8,7 @@ public class UniteInfo {
 	private double allMoney;
 	private Date   payTime;
 	private String stat;
+	private int sumNum;
 	public String getUname() {
 		return uname;
 	}
@@ -37,5 +38,11 @@ public class UniteInfo {
 	}
 	public void setStat(String stat) {
 		this.stat = stat;
+	}
+	public int getSumNum() {
+		return sumNum;
+	}
+	public void setSumNum(int sumNum) {
+		this.sumNum = sumNum;
 	}
 }
