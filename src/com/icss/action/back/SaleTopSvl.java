@@ -14,7 +14,6 @@ import com.icss.bll.OrderBiz;
 import com.icss.entity.UniteInfo;
 import com.icss.util.Log;
 
-import net.sf.json.JSONArray;
 
 /**
  * Servlet implementation class SaleTopSvl
