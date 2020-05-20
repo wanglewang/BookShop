@@ -30,7 +30,7 @@ function goPage(pno,psize){
     var irow = itable.rows[i];
     if(i>=startRow && i<endRow){
 
-    	 irow.style.display="block";
+    	 irow.style.display="";
     }else{
 
     	 irow.style.display="none";
@@ -59,19 +59,9 @@ function goPage(pno,psize){
   </head>
   
   <body onLoad="goPage(1,1);">
-    <table align="center" width=90%>
-    	 <tr>
-      	<td align=right>
-      	    
-      	  		管理员: admin &nbsp;	  		       	         	    	         	          	  	
-      		
-      			<a href="<%=basePath%>user/LogoutSvl">退出</a>
-      		      	
-      	</td>       	
-      </tr>
+<table align="center" width=90%>
        <jsp:include page="bhead.jsp"></jsp:include>       	
       <tr><td align="left"><h2>购买记录</h2></td></tr>
-      
       <!-- 查询条件 -->
       <tr>
       	<td><form action="<%=basePath%>back/SeekInfoSvl" method="post" id="myForm">
@@ -84,38 +74,23 @@ function goPage(pno,psize){
       		</form>
       	</td>
       </tr>
-      
-      
-      <tr>
-      	<td align=left>
-      	  <table border="1" width=100%> 
-      	   <tr><td>用户名</td><td>书名</td><td>购买日期</td><td>总付款</td><td>配送状况</td></tr>
-      	  
-      	<tr>
-      	<td colspan=8>
-      		<table id="idData" cellSpacing="0" cellPadding="1" width="100%" border="0" style="font-family:arial;color:red;font-size:12px;">	    		
-	    			
+      <tr><td><table width="100%" border="1">
+      	<tr><td width="12.5%">用户</td><td>书名</td><td>下单时间</td><td>总额</td><td>状态</td></tr>  </table>
+      		<table id="idData" width="100%" border="1" style="color:red;font-size:12px;">	    		
+      		
 	    			<c:forEach var="unit" items="${units}">		
        					<tr>
        				<td>${unit.uname}</td>
        				<td>${unit.bname}</td>
        				<td>${unit.payTime}</td>
-       				  <td>${unit.allMoney}</td>
+       				 <td>${unit.allMoney}</td>
        				<td>${unit.stat}</td>
        				</tr> 
 					</c:forEach>
-	    	   		
-	    		</table>	    	
-      	</td>
-      </tr>
-      	  	
-      	  	
-      	  </table>
-    	
-      	</td>
-      </tr>
-    </table>
-      <table width="60%" align="right">
+	    	   		   </table></td></tr>
+    
+  </table>
+    <table>
     <tr><td><div id="barcon" name="barcon"></div></td></tr>
   </table>
   </body>

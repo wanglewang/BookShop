@@ -15,7 +15,7 @@ public class OrderDetailDao extends BaseDao {
 		// TODO Auto-generated method stub
 	List<OrderDetail> ods;
 	int i=0;
-	String sql = "select * from torderdetail where oid="+ oid + ";";
+	String sql = "select * from torderdetail where oid='"+ oid + "';";
 	this.openConnection();
 	PreparedStatement ps = this.conn.prepareStatement(sql);
 	ResultSet rs = ps.executeQuery();

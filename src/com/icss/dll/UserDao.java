@@ -41,13 +41,14 @@ public class UserDao extends BaseDao{
 	public String addOrder(String uname,double allMoney) throws Exception{
 
 		String oid = OrderUtil.createNewOrderNo();
-		String sql = "insert into torder values(?,?,?,?)";
+		String sql = "insert into torder values(?,?,?,?,?)";
 		this.openConnection();
 		PreparedStatement ps = this.conn.prepareStatement(sql);
 		ps.setString(1, oid);
 		ps.setString(2,uname);
 		ps.setDouble(3,allMoney);
 		ps.setTimestamp(4,new java.sql.Timestamp(new Date().getTime()));
+		ps.setString(5,"Œ¥≈‰ÀÕ");
 		ps.executeUpdate();
 		ps.close();
 		

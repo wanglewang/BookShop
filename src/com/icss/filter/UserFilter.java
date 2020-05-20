@@ -43,7 +43,7 @@ public class UserFilter implements Filter {
 		}else {
 			//未登录的转向登录页
 			request.setAttribute("msg", "访问受限页面，请先登录...");
-			request.getRequestDispatcher("/WEB-INF/main/login.jsp").forward(request, res);
+			request.getRequestDispatcher("/WEB-INF/main/login2.jsp").forward(request, res);
 		}
 		
 	}

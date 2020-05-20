@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.icss.bll.OrderDetailBiz;
+import com.icss.dll.OrderDao;
 import com.icss.entity.OrderDetail;
+import com.icss.util.Log;
 
 /**
  * Servlet implementation class OrderDealDetailSvl
@@ -30,20 +32,16 @@ public class OrderDealDetailSvl extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/main/OrderDealDetail.jsp").forward(request, response);
-	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<OrderDetail> ods;
          String Oid=request.getParameter("oid");
          OrderDetailBiz biz=new OrderDetailBiz();
-        try {ods=biz.getOrderDetail(Oid);
+        try {
+        	ods=biz.getOrderDetail(Oid);
 			request.setAttribute("ods" ,ods);
 	 		request.getRequestDispatcher("/WEB-INF/main/OrderDealDetail.jsp").forward(request, response);
 		}
@@ -53,7 +51,6 @@ public class OrderDealDetailSvl extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/error/err.jsp").forward(request, response);
 			e.printStackTrace();
 		}
-
 	}
 
 }

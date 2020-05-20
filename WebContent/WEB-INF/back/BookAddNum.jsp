@@ -22,11 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
       <tr>
       	<td>
-      	<form action="<%=basePath%>back/BookAddNumSvl" method="post">
+      	<form action="<%=basePath%>back/BookAddNumSvl" method="post" id="myform">
       		<table border="0" width=60% align="center">  		
       			<tr><td>书号ISBN</td><td><input type="text" name="isbn"/></td></tr>
       				<tr><td>数量</td><td><input type="text" name="num"/></td></tr>
-       			<tr><td colspan=2 align=center><input type=submit value=提交 /></td></tr>
+       			<tr><td colspan=2 align=center>	<input type="submit" value="提交"  class="button"/></td></tr>
     		</table>
     	</form>
       	</td>

@@ -57,8 +57,8 @@ public class BookAddNumSvl extends HttpServlet {
 		 }
 		catch (Exception e) {
 				Log.logger.error(e.getMessage(),e);
-				request.setAttribute("msg", "网络异常，请和管理员联系");
-				request.getRequestDispatcher("/WEB-INF/error/err.jsp").forward(request, response);
+				request.setAttribute("msg", "输入错误");
+				request.getRequestDispatcher("/WEB-INF/back/BookAddNum.jsp").forward(request, response);
 			}		
 		
 	}

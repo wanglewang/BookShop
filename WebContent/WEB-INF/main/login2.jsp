@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html" pageEncoding="utf-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html>
@@ -27,32 +27,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   data: "uname="+ uname + "&pwd=" + pwd,
 		   success: function(msg){
 		       if(msg == "1"){
-		    	   window.location.href = "<%=basePath%>MainSvl";
-		       }else if(msg == "0"){		    	   
-		    	   span.innerHTML="用户名或密码错误，请重新输入！";
-		       }else if(msg == "-2"){
-		    	   span.innerHTML="用户名或密码不能为空";
-		       }else if(msg == "-1"){
-		    	   span.innerHTML="网络异常，请和管理员联系...";
-		       }else{
-		    	   
-		       }
-		   }
+		    	   window.location.href = "<%=basePath%>
+	MainSvl";
+				} else if (msg == "0") {
+					span.innerHTML = "用户名或密码错误，请重新输入！";
+				} else if (msg == "-2") {
+					span.innerHTML = "用户名或密码不能为空";
+				} else if (msg == "-1") {
+					span.innerHTML = "网络异常，请和管理员联系...";
+				} else {
+
+				}
+			}
 		});
-   } 
+	}
 </script>
+<meta charset="utf-8">
+<title></title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- //for-mobile-apps -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
 </head>
 <body>
-	 <form action="<%=basePath%>LoginSvl2" method="post" id="myform">
-        <table align="center">            
-            <tr><td height=200></td></tr>
-            <tr><td>用户名：</td><td><input type="text" name="uname" id="uname"></td></tr>
-            <tr><td>密码：</td><td><input type="password" name="pwd" id="pwd"></td></tr>
-            <tr><td colspan="2" align="center">
-            	<input type="button" value="提交" onclick="tijiao()"/>&nbsp;&nbsp;<a href="<%=basePath%>RegistSvl">注册</a></td>
-            </tr>
-            <tr><td colspan="2" align="center"><span id="msg" style="color:red;font-size:8px">${msg}</span></td></tr>
-        </table>
-    </form>	
+	<div class="main">
+		<form action="<%=basePath%>LoginSvl" method="post">
+			<table align="center">
+				<tr>
+					<td height=200></td>
+				</tr>
+				<tr>
+					<td>用户名：</td>
+					<td><input type="text" name="uname" id="uname"></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input type="password" name="pwd" id="pwd"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="提交"
+						onclick="tijiao()" class="button" />&nbsp;&nbsp;<a
+						href="<%=basePath%>RegistSvl">注册</a></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span id="msg"
+						style="color: red; font-size: 8px">${msg}</span></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
